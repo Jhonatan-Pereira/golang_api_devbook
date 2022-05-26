@@ -343,6 +343,10 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 	}
 
 	corpoRequisicao, erro := ioutil.ReadAll(r.Body)
+	if erro != nil {
+		respostas.Erro(w, http.StatusInternalServerError, erro)
+		return
+	}
 
 	var senha modelos.Senha
 	if erro = json.Unmarshal(corpoRequisicao, &senha); erro != nil {
@@ -375,7 +379,7 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if erro = repositorios.AtualizarSenha(usuarioID, string(senhaComHash)); erro != nil {
+	if erro = repositorio.AtualizarSenha(usuarioID, string(senhaComHash)); erro != nil {
 		respostas.Erro(w, http.StatusInternalServerError, erro)
 		return
 	}
