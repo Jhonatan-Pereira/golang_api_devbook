@@ -119,7 +119,7 @@ func AtualizarUsuario(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if usuarioID != usuarioIDNoToken {
-		respostas.Erro(w, http.StatusForbidden, errors.New("Não é possível atualizar dados do usuário que não é o seu"))
+		respostas.Erro(w, http.StatusForbidden, errors.New("não é possível atualizar dados do usuário que não é o seu"))
 		return
 	}
 
@@ -173,7 +173,7 @@ func DeletarUsuario(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if usuarioID != usuarioIDNoToken {
-		respostas.Erro(w, http.StatusForbidden, errors.New("Não é possível atualizar dados do usuário que não é o seu"))
+		respostas.Erro(w, http.StatusForbidden, errors.New("não é possível atualizar dados do usuário que não é o seu"))
 		return
 	}
 
@@ -210,7 +210,7 @@ func SeguirUsuario(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if seguidorID == usuarioID {
-		respostas.Erro(w, http.StatusForbidden, errors.New("Não é possível seguir você mesmo"))
+		respostas.Erro(w, http.StatusForbidden, errors.New("não é possível seguir você mesmo"))
 		return
 	}
 
@@ -247,7 +247,7 @@ func PararDeSeguirUsuario(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if seguidorID == usuarioID {
-		respostas.Erro(w, http.StatusForbidden, errors.New("Não é possível parar de seguir você mesmo"))
+		respostas.Erro(w, http.StatusForbidden, errors.New("não é possível parar de seguir você mesmo"))
 		return
 	}
 
@@ -338,7 +338,7 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if usuarioIDToken != usuarioID {
-		respostas.Erro(w, http.StatusForbidden, errors.New("Não é possível atualizar a senha de um usuário que não seja o seu"))
+		respostas.Erro(w, http.StatusForbidden, errors.New("não é possível atualizar a senha de um usuário que não seja o seu"))
 		return
 	}
 
@@ -369,7 +369,7 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if erro = seguranca.VerificarSenha(senhaSalvaNoBanco, senha.Atual); erro != nil {
-		respostas.Erro(w, http.StatusUnauthorized, errors.New("A senha atual não condiz com a que está salva na base"))
+		respostas.Erro(w, http.StatusUnauthorized, errors.New("a senha atual não condiz com a que está salva na base"))
 		return
 	}
 

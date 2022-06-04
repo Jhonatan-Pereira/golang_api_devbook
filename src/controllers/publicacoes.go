@@ -133,7 +133,7 @@ func AtualizarPublicao(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if publicacaoSalvaNoBanco.AutorID != usuarioID {
-		respostas.Erro(w, http.StatusForbidden, errors.New("Não é possível atualizar uma publicação que não seja sua"))
+		respostas.Erro(w, http.StatusForbidden, errors.New("não é possível atualizar uma publicação que não seja sua"))
 		return
 	}
 
@@ -190,7 +190,7 @@ func DeletarPublicao(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if publicacaoSalvaNoBanco.AutorID != usuarioID {
-		respostas.Erro(w, http.StatusForbidden, errors.New("Não é possível deletar uma publicação que não seja sua"))
+		respostas.Erro(w, http.StatusForbidden, errors.New("não é possível deletar uma publicação que não seja sua"))
 		return
 	}
 
